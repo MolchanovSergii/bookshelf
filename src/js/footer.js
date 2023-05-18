@@ -8,12 +8,12 @@
   };
 
   refs.openModalBtn.addEventListener('click', toggleModal);
-   if (refs && refs.closeModalBtn) {
-  refs.closeModalBtn.addEventListener('click', toggleModal);
-   }
+  if (refs && refs.closeModalBtn) {
+    refs.closeModalBtn.addEventListener('click', toggleModal);
+  }
   function toggleModal() {
     const isModalOpen =
-    refs.openModalBtn.getAttribute('aria-expanded') === 'true' || false;
+      refs.openModalBtn.getAttribute('aria-expanded') === 'true' || false;
     refs.openModalBtn.setAttribute('aria-expanded', !isModalOpen);
     refs.modal.classList.toggle('is-hidden');
     // ----------------Scroll block---------------
@@ -24,24 +24,16 @@
       : 'enableBodyScroll';
     // bodyScrollLock[scrollLockMethod](document.body);
 
-    function onModalClose (evt) {
+    function onModalClose(evt) {
       // refs.modal.removeEventListener('keydown', onEscPress);
       refs.modal.classList.add('is-hidden');
     }
 
     refs.modal.addEventListener('click', onBackdropClick);
-    function onBackdropClick (evt) {
-      if(evt.currentTarget === evt.target) {
-        onModalClose()
+    function onBackdropClick(evt) {
+      if (evt.currentTarget === evt.target) {
+        onModalClose();
       }
     }
-
-    // function onEscPress (evt) {
-    //   console.log (evt.code)
-    //   if (evt.code === 'Escape') {
-    //     onModalClose()
-    //   }
-    // }
-    
   }
 })();
